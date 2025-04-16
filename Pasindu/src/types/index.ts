@@ -9,3 +9,9 @@ export interface MoveHistory {
   moveNumber: number;
 }
 
+export interface PlayerResult {
+  name: string;
+  moves: string[];
+  date: string;
+}
+
