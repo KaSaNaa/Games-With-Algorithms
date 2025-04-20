@@ -1,5 +1,5 @@
 // Test for the Eight Queens solver logic
-
+import queen from "../workers/eightQueensWorker.js";
 function solveEightQueens() {
     let count = 0;
     function solve(col, rows, diag1, diag2) {

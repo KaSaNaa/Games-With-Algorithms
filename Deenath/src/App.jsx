@@ -67,9 +67,13 @@ function App() {
       const exists = solutions.find((s) => s.key === normalized.key);
       const duration = ((Date.now() - startTime) / 1000).toFixed(2);
 
+      // if (exists) {
+      //   alert("This method has already been used by another player. Try a different way.");
+      // } 
       if (exists) {
-        alert("This method has already been used by another player. Try a different way.");
-      } else {
+        alert(`This method has already been used by ${exists.player}. Try a different way.`);
+      }
+      else {
         const newEntry = {
           key: normalized.key,
           player: submittedName,
