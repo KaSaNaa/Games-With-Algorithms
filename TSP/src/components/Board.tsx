@@ -1,6 +1,7 @@
 import React from "react";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
+import Tooltip from "@mui/material/Tooltip";
 
 // Clean, simple, well-spaced positions for 600x440 SVG
 const CITY_POSITIONS = [
@@ -117,20 +118,22 @@ function Board({ matrix, homeCity, selectedCities, cityLabels, route }: BoardPro
                         }
                         return (
                             <g key={idx}>
-                                <circle
-                                    cx={x}
-                                    cy={y}
-                                    r={r}
-                                    fill={fill}
-                                    stroke={stroke}
-                                    strokeWidth={2}
-                                    style={{ filter: "drop-shadow(0 2px 6px #1976d233)" }}
-                                />
+                                <Tooltip title={cityLabels[idx]} arrow>
+                                    <circle
+                                        cx={x}
+                                        cy={y}
+                                        r={r}
+                                        fill={fill}
+                                        stroke={stroke}
+                                        strokeWidth={2}
+                                        style={{ filter: "drop-shadow(0 2px 6px #1976d233)", cursor: "pointer" }}
+                                    />
+                                </Tooltip>
                                 <text
                                     x={x}
-                                    y={y + 4}
+                                    y={y + 5}
                                     textAnchor="middle"
-                                    fontSize={idx === homeCity ? 13 : 11}
+                                    fontSize={idx === homeCity ? 15 : 13}
                                     fill="#fff"
                                     fontWeight="bold"
                                     style={{ textShadow: "0 1px 2px #1976d288" }}
@@ -140,9 +143,9 @@ function Board({ matrix, homeCity, selectedCities, cityLabels, route }: BoardPro
                                 {/* City name below the node */}
                                 <text
                                     x={x}
-                                    y={y + r + 10}
+                                    y={y + r + 13}
                                     textAnchor="middle"
-                                    fontSize={10}
+                                    fontSize={11}
                                     fill="#333"
                                     fontWeight={idx === homeCity ? "bold" : "normal"}
                                     style={{ textShadow: "0 1px 2px #fff8" }}

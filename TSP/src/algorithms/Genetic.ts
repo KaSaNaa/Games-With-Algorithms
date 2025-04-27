@@ -4,6 +4,11 @@ export function geneticTSP(
     cities: number[],
     options?: { populationSize?: number; generations?: number; mutationRate?: number }
 ): { route: number[]; distance: number } {
+    // Additional validation
+    if (cities.length < 2) return { route: [], distance: 0 };
+    if (cities.includes(home)) return { route: [], distance: 0 };
+    if (new Set(cities).size !== cities.length) return { route: [], distance: 0 };
+
     const populationSize = options?.populationSize ?? 60;
     const generations = options?.generations ?? 100;
     const mutationRate = options?.mutationRate ?? 0.2;

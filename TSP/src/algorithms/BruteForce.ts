@@ -13,6 +13,11 @@ function permute<T>(arr: T[]): T[][] {
 // Brute Force TSP: O(n!) complexity
 export function bruteForceTSP(matrix: number[][], home: number, cities: number[]): { route: number[], distance: number } {
     if (cities.length > 7) return { route: [], distance: 0 };
+    // Additional validation
+    if (cities.length < 2) return { route: [], distance: 0 };
+    if (cities.includes(home)) return { route: [], distance: 0 };
+    if (new Set(cities).size !== cities.length) return { route: [], distance: 0 };
+
     let minDist = Infinity;
     let bestRoute: number[] = [];
     for (const perm of permute(cities)) {

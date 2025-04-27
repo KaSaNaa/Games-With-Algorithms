@@ -15,6 +15,8 @@ import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import SaveIcon from "@mui/icons-material/Save";
 import { useState } from "react";
 import { geneticTSP } from "../algorithms/Genetic";
+import Tooltip from "@mui/material/Tooltip";
+import Alert from "@mui/material/Alert";
 
 type ResultsProps = {
     matrix: number[][];
@@ -36,7 +38,8 @@ function Results({ matrix, homeCity, selectedCities, playerName, onReset }: Resu
     // Brute Force (only if ≤7 cities)
     let brute: { route: number[], distance: number } | null = null;
     let bruteMs = 0;
-    if (selectedCities.length > 0 && selectedCities.length <= 7) {
+    const BRUTE_LIMIT = 7;
+    if (selectedCities.length > 0 && selectedCities.length <= BRUTE_LIMIT) {
         const { result, ms } = timeAlgo(() => bruteForceTSP(matrix, homeCity, selectedCities));
         brute = result;
         bruteMs = ms;
@@ -125,6 +128,11 @@ function Results({ matrix, homeCity, selectedCities, playerName, onReset }: Resu
             <Typography variant="h6" sx={{ mb: 2 }}>
                 Algorithm Results
             </Typography>
+            {selectedCities.length > BRUTE_LIMIT && (
+                <Alert severity="info" sx={{ mb: 2, width: "100%" }}>
+                    Brute Force is only available for 7 or fewer cities due to computational limits.
+                </Alert>
+            )}
             <TableContainer>
                 <Table size="small">
                     <TableHead>
@@ -162,15 +170,19 @@ function Results({ matrix, homeCity, selectedCities, playerName, onReset }: Resu
                 </Table>
             </TableContainer>
             <Box sx={{ display: "flex", gap: 2, mt: 3 }}>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    startIcon={<SaveIcon />}
-                    onClick={handleSave}
-                    disabled={saved}
-                >
-                    {saved ? "Saved" : "Save Result"}
-                </Button>
+                <Tooltip title={saved ? "Result already saved" : "Save the shortest route to leaderboard"}>
+                    <span>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            startIcon={<SaveIcon />}
+                            onClick={handleSave}
+                            disabled={saved}
+                        >
+                            {saved ? "Saved" : "Save Result"}
+                        </Button>
+                    </span>
+                </Tooltip>
                 <Button
                     variant="outlined"
                     color="primary"

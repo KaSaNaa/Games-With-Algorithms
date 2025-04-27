@@ -12,8 +12,23 @@ const STORAGE_KEY = "tsp_results";
 
 export function saveTSPResult(result: TSPResult) {
     const data = loadTSPResults();
+    // Prevent duplicates (same player, home, cities, algorithm, and route)
+    const isDuplicate = data.some(r =>
+        r.playerName === result.playerName &&
+        r.homeCity === result.homeCity &&
+        JSON.stringify(r.selectedCities) === JSON.stringify(result.selectedCities) &&
+        r.algorithm === result.algorithm &&
+        JSON.stringify(r.route) === JSON.stringify(result.route)
+    );
+    if (isDuplicate) return;
     data.push(result);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+        // Optionally, handle quota exceeded
+        // eslint-disable-next-line no-console
+        console.error("Could not save result to localStorage:", e);
+    }
 }
 
 export function loadTSPResults(): TSPResult[] {

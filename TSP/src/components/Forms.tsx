@@ -21,31 +21,42 @@ function Forms({ cityLabels, homeCity, onSubmit, playerName, selectedCities }: F
     const [cities, setCities] = useState<number[]>(selectedCities);
     const [error, setError] = useState<string | null>(null);
 
+    const MAX_CITIES = 9; // Can't select all (must exclude home)
+    const MIN_CITIES = 2;
+    const MAX_BRUTE = 7;
+
     const handleCityChange = (cityIdx: number) => {
         setCities(prev =>
             prev.includes(cityIdx)
                 ? prev.filter(c => c !== cityIdx)
-                : [...prev, cityIdx]
+                : prev.length < MAX_CITIES
+                    ? [...prev, cityIdx]
+                    : prev
         );
+    };
+
+    const validate = () => {
+        if (!name.trim()) return "Please enter your name.";
+        if (cities.length < MIN_CITIES) return "Select at least 2 cities to visit.";
+        if (cities.includes(homeCity)) return "Cannot select home city.";
+        if (cities.length > MAX_CITIES) return `Cannot select more than ${MAX_CITIES} cities.`;
+        return null;
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!name.trim()) {
-            setError("Please enter your name.");
-            return;
-        }
-        if (cities.length < 2) {
-            setError("Select at least 2 cities to visit.");
-            return;
-        }
-        if (cities.includes(homeCity)) {
-            setError("Cannot select home city.");
+        const err = validate();
+        if (err) {
+            setError(err);
             return;
         }
         setError(null);
         onSubmit(name.trim(), cities);
     };
+
+    const helperText = `Pick ${MIN_CITIES}–${MAX_CITIES} cities (Brute Force supports up to ${MAX_BRUTE})`;
+
+    const isInvalid = !!validate();
 
     return (
         <Box
@@ -70,10 +81,13 @@ function Forms({ cityLabels, homeCity, onSubmit, playerName, selectedCities }: F
                 variant="outlined"
                 size="small"
                 sx={{ mb: 3, width: 260, background: "#fff", borderRadius: 1 }}
+                inputProps={{ maxLength: 24 }}
+                required
             />
             <Typography sx={{ mb: 1, fontWeight: 600, color: "primary.dark" }}>
                 Select cities to visit (excluding home city <Box component="span" sx={{ color: "#ff9800" }}>{cityLabels[homeCity]}</Box>):
             </Typography>
+            <Typography sx={{ fontSize: 13, color: "grey.700", mb: 1 }}>{helperText}</Typography>
             <FormGroup row sx={{ mb: 2, gap: 1 }}>
                 {cityLabels.map((label, idx) => (
                     <FormControlLabel
@@ -82,7 +96,7 @@ function Forms({ cityLabels, homeCity, onSubmit, playerName, selectedCities }: F
                             <Checkbox
                                 checked={cities.includes(idx)}
                                 onChange={() => handleCityChange(idx)}
-                                disabled={idx === homeCity}
+                                disabled={idx === homeCity || (cities.length >= MAX_CITIES && !cities.includes(idx))}
                                 sx={{
                                     color: idx === homeCity ? "#ff9800" : "#1976d2",
                                     "&.Mui-checked": { color: "#1976d2" }
@@ -107,6 +121,7 @@ function Forms({ cityLabels, homeCity, onSubmit, playerName, selectedCities }: F
                     borderRadius: 2,
                     background: "linear-gradient(90deg, #1976d2 60%, #42a5f5 100%)"
                 }}
+                disabled={isInvalid}
             >
                 Submit
             </Button>
