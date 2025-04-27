@@ -222,9 +222,14 @@ const Game = () => {
                         ? '3-Peg Iterative'
                         : '3-Peg Recursive'}
             </h2>
-            <button onClick={startGame} className="restart-button" disabled={gameCompleted}>
-                Restart Game
-            </button>
+            <div className="game-controls">
+                <button onClick={startGame} className="restart-button" disabled={gameCompleted}>
+                    Restart Game
+                </button>
+                <button onClick={handleChangeGameType} className="quit-button" disabled={gameCompleted}>
+                    Quit
+                </button>
+            </div>
             <div className="game-board">
                 <h3>Number of disks: {numDisks}</h3>
                 <div className="towers-container">
@@ -248,10 +253,19 @@ const Game = () => {
                     rows="1"
                     className="move-sequence-text"
                     placeholder="Enter moves manually or use clicks..."
-                    disabled={gameCompleted} // disable textarea after game complete
+                    disabled={gameCompleted}
                 ></textarea>
             </div>
-            {message && <div className="message">{message}</div>}
+
+            {/* Add error overlay */}
+            {message && (
+                <div className="error-overlay">
+                    <div className="error-modal">
+                        <p>{message}</p>
+                        <button onClick={() => setMessage('')}>Dismiss</button>
+                    </div>
+                </div>
+            )}
 
             {gameCompleted && (
                 <div className="congratulations-overlay">
