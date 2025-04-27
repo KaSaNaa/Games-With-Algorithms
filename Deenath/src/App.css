@@ -160,12 +160,18 @@ table tbody tr:hover {
   flex-direction: column;
 }
 .terminate{
-  position: absolute;  
-  bottom: 1vh;
-  right: 10vh;
+  position: relative;
+  width: 30%; /* Make it the same width as the table */
+  margin-top: 10px; /* Add 10px margin above the button */
   background-color: #ce4848;
   transition: background-color 0.3s ease;
+  text-align: center; /* Center the text */
+  align-self: flex-end; /* Align button itself to center */
+  height: auto; /* Let the height adjust to content */
+  padding: 10px; /* Add some padding for better look */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
+
 .terminate:hover{
   background-color: #8f2f2f;
   
