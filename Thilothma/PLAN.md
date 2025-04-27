@@ -1,6 +1,27 @@
 # 🧩 Full Plan for Tic-Tac-Toe 5x5 (Human vs Computer)
 
 ---
+here is the next game. as we did for all other games, we need to build a same type of plan with same tech stack.
+1. Create a game menu option called Tic-Tac-Toe
+• Implement a Human vs. Computer 5*5 Tic Tac Toe Game
+• Determining the optimal Tic-Tac-Toe move for a computer player using appropriate Application Data
+Structures & algorithms
+• Determine the optimal move for the computer player by applying two different algorithmic approaches.
+• Allow game players to provide answers using a user interface
+• Provide user interface when players win, lose, or draw a game
+• When a game player correctly identifies an answer, save that person's name along with the correct
+response in the database.
+• Additionally, record in the database how long it takes for each computer movement based on each
+algorithm during each game round.
+• Include the Code used for unit Testing
+• Apply appropriate validations & Exception Handling
+
+. Tic-Tac-Toe (20 Marks )
+Application & Group Report (10 marks)
+0-25 % Implement Algorithm & use of appropriate Application Data Structures
+26-50 % Implementation of the Functionality Asked for in the Question
+51-75 % Unit Testing Code ,User interface & Validations
+76-100% Overall Knowledge about the Coursework based on VIVA Q&A
 
 ## 🏗️ 1. Tech Stack
 
@@ -114,7 +135,7 @@ We'll use:
 
 | Phase | Tasks |
 |-------|-------|
-| Phase 1 | Build the basic 5x5 board and player move logic |
+| **Phase 1 (In Progress)** | **Project initialization, build the basic 5x5 board and player move logic** |
 | Phase 2 | Implement simple random computer player |
 | Phase 3 | Implement Minimax AI (depth limited) |
 | Phase 4 | Implement MCTS AI |
@@ -143,6 +164,52 @@ We are building **a proper polished web game**, React-style.
 Locally stored.  
 Cleanly divided logic.  
 With two **serious AI strategies**.
+
+---
+
+# 🗂️ Suggested Folder Structure
+
+```
+src/
+  components/
+    Menu/
+      Menu.tsx
+    TicTacToe/
+      Board.tsx
+      Cell.tsx
+      Game.tsx
+      EndgameModal.tsx
+      NameInputModal.tsx
+    Leaderboard/
+      Leaderboard.tsx
+  logic/
+    ticTacToe/
+      gameLogic.ts
+      minimax.ts
+      mcts.ts
+  utils/
+    storage.ts
+    timer.ts
+  tests/
+    ticTacToe/
+      gameLogic.test.ts
+      minimax.test.ts
+      mcts.test.ts
+  App.tsx
+  main.tsx
+  index.css
+```
+
+# 🌳 Component Tree
+
+- `<App>`
+  - `<Menu />`
+  - `<TicTacToeGame />`
+    - `<Board />`
+      - `<Cell />`
+    - `<EndgameModal />`
+    - `<NameInputModal />`
+  - `<Leaderboard />` (optional)
 
 ---
 
