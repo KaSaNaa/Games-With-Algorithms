@@ -161,7 +161,7 @@ table tbody tr:hover {
 }
 .terminate{
   position: absolute;  
-  bottom: 3vh;
+  bottom: 1vh;
   right: 10vh;
   background-color: #ce4848;
   transition: background-color 0.3s ease;
