@@ -1,5 +1,3 @@
-// client/src/algorithms.js
-
 // 3-Peg Recursive Algorithm
 export function hanoiRecursive(n, source, auxiliary, destination) {
     let moves = [];

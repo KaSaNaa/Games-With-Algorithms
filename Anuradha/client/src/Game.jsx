@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; // <-- add useNavigate
+import { useLocation, useNavigate } from 'react-router-dom';
 import Tower from './components/Tower';
 import { hanoiRecursive, hanoiIterative, frameStewart } from './algorithms';
 import './Game.css';

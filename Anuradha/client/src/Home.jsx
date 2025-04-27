@@ -1,4 +1,3 @@
-// client/src/Home.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';  // Create additional styles as needed

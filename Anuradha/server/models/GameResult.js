@@ -1,4 +1,3 @@
-// server/models/GameResult.js
 import mongoose from 'mongoose';
 
 const gameResultSchema = new mongoose.Schema({
