@@ -17,7 +17,6 @@ export const Game: React.FC<GameProps> = ({ algorithm }) => {
   const [board, setBoard] = useState(createEmptyBoard());
   const [xIsNext, setXIsNext] = useState(true);
   const [moveTimes, setMoveTimes] = useState<number[]>([]);
-  const [playerName, setPlayerName] = useState<string>("");
 
   const result = getGameResult(board);
 
@@ -65,8 +64,13 @@ export const Game: React.FC<GameProps> = ({ algorithm }) => {
   React.useEffect(() => {
     if ((result.winner || result.draw) && moveTimes.length > 0) {
       try {
+        // Get player name from global or localStorage
+        const playerName =
+          (typeof window !== "undefined" && (window as any).playerName) ||
+          localStorage.getItem("playerName") ||
+          "Anonymous";
         saveGameResult({
-          playerName: playerName || "Anonymous",
+          playerName,
           algorithm,
           result: result.winner === "X" ? "Win" : result.winner === "O" ? "Lose" : "Draw",
           moveTimes,
