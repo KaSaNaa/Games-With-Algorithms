@@ -3,13 +3,39 @@ import { getAvailableMoves, checkWinner } from "./gameLogic";
 
 export function mctsMove(board: Board, player: Player, simulations = 30): Move {
   const moves = getAvailableMoves(board);
+
+  // 1. Check for immediate win
+  for (const move of moves) {
+    const newBoard = applyMove(board, move, player);
+    if (checkWinner(newBoard) === player) {
+      return move;
+    }
+  }
+
+  // 2. Check for immediate block (prevent opponent's win)
+  const opponent = switchPlayer(player);
+  for (const move of moves) {
+    const newBoard = applyMove(board, move, player);
+    const opponentMoves = getAvailableMoves(newBoard);
+    for (const oppMove of opponentMoves) {
+      const oppBoard = applyMove(newBoard, oppMove, opponent);
+      if (checkWinner(oppBoard) === opponent) {
+        // Block this move by playing here
+        return oppMove;
+      }
+    }
+  }
+
+  // 3. MCTS simulation as fallback
   let bestMove = moves[0];
   let bestWinRate = -1;
 
   for (const move of moves) {
     let wins = 0;
     for (let i = 0; i < simulations; i++) {
-      if (simulateRandomGame(applyMove(board, move, player), switchPlayer(player)) === player) {
+      // Simulate from the perspective of the current player
+      const winner = simulateRandomGame(applyMove(board, move, player), switchPlayer(player));
+      if (winner === player) {
         wins++;
       }
     }
