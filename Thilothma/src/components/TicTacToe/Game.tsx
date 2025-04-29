@@ -7,7 +7,7 @@ import { createEmptyBoard, getGameResult, getAvailableMoves } from "../../logic/
 import { minimaxMove } from "../../logic/ticTacToe/minimax";
 import { mctsMove } from "../../logic/ticTacToe/mcts";
 import { Timer } from "../../utils/timer";
-import { saveGameResult } from "../../utils/storage";
+import { saveGameResult, loadGameResults } from "../../utils/storage";
 
 type GameProps = {
   algorithm: "minimax" | "mcts";
@@ -60,6 +60,17 @@ export const Game: React.FC<GameProps> = ({ algorithm }) => {
     setMoveTimes([]);
   };
 
+  const handleDownloadResults = () => {
+    const results = loadGameResults();
+    const blob = new Blob([JSON.stringify(results, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "tic-tac-toe-results.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   // Save result when game ends
   React.useEffect(() => {
     if ((result.winner || result.draw) && moveTimes.length > 0) {
@@ -101,10 +112,13 @@ export const Game: React.FC<GameProps> = ({ algorithm }) => {
         </Alert>
       )}
       {(result.winner || result.draw) && (
-        <Button variant="contained" sx={{ mt: 2 }} onClick={handleRestart}>
+        <Button variant="contained" sx={{ mt: 2, mr: 2 }} onClick={handleRestart}>
           Restart Game
         </Button>
       )}
+      <Button variant="outlined" sx={{ mt: 2 }} onClick={handleDownloadResults}>
+        Download Results
+      </Button>
     </div>
   );
 };
