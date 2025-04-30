@@ -93,6 +93,7 @@ function Results({ matrix, homeCity, selectedCities, playerName, onReset }: Resu
             route: shortest.route,
             distance: shortest.distance,
             date: new Date().toISOString(),
+            timeMs: shortest.ms // <-- Store time taken in ms
         });
         setSaved(true);
     };

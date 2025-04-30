@@ -1,0 +1,82 @@
+[
+  {
+    "playerName": "Pasindu",
+    "homeCity": 7,
+    "selectedCities": [0, 6, 1, 2, 8, 9, 3, 4, 5],
+    "algorithm": "Nearest Neighbor",
+    "route": [6, 8, 4, 0, 9, 5, 1, 3, 2],
+    "distance": 627,
+    "date": "2025-04-18T11:04:44.000Z",
+    "timeMs": 4.299999999937741
+  },
+  {
+    "playerName": "Anuradha",
+    "homeCity": 5,
+    "selectedCities": [1, 7, 8],
+    "algorithm": "Brute Force",
+    "route": [1, 7, 8],
+    "distance": 273,
+    "date": "2025-04-18T11:24:34.079Z",
+    "timeMs": 2.100000000023283
+  },
+  {
+    "playerName": "Thilo",
+    "homeCity": 0,
+    "selectedCities": [1, 5, 7, 6, 4, 8, 2, 3, 9],
+    "algorithm": "Genetic Algorithm",
+    "route": [8, 5, 3, 4, 6, 1, 9, 7, 2],
+    "distance": 1313,
+    "date": "2025-04-18T12:19:50.076Z",
+    "timeMs": 7.599999999825377
+  },
+  {
+    "playerName": "rrr",
+    "homeCity": 6,
+    "selectedCities": [2, 5, 7, 8],
+    "algorithm": "Brute Force",
+    "route": [5, 8, 2, 7],
+    "distance": 985,
+    "date": "2025-04-18T12:33:37.217Z",
+    "timeMs": 3.800000000745058
+  },
+  {
+    "playerName": "Pasindu",
+    "homeCity": 5,
+    "selectedCities": [0, 1, 2, 3],
+    "algorithm": "Brute Force",
+    "route": [0, 2, 1, 3],
+    "distance": 1067,
+    "date": "2025-04-30T14:46:57.909Z",
+    "timeMs": 2.599999999651128
+  },
+  {
+    "playerName": "Bro",
+    "homeCity": 7,
+    "selectedCities": [0, 6, 5, 9, 3],
+    "algorithm": "Brute Force",
+    "route": [0, 6, 3, 5, 9],
+    "distance": 1328,
+    "date": "2025-04-30T14:52:43.881Z",
+    "timeMs": 1.3999999999068677
+  },
+  {
+    "playerName": "sfsfsafsaf",
+    "homeCity": 2,
+    "selectedCities": [0, 1, 3, 5, 7, 4, 6, 8],
+    "algorithm": "Genetic Algorithm",
+    "route": [0, 8, 5, 3, 4, 6, 1, 7],
+    "distance": 1348,
+    "date": "2025-04-30T14:54:26.552Z",
+    "timeMs": 13.700000000186265
+  },
+  {
+    "playerName": "Thilothma",
+    "homeCity": 3,
+    "selectedCities": [0, 1, 7, 4, 9, 6, 2, 8, 5],
+    "algorithm": "Genetic Algorithm",
+    "route": [5, 8, 0, 2, 7, 9, 1, 6, 4],
+    "distance": 1313,
+    "date": "2025-04-30T14:55:11.326Z",
+    "timeMs": 6.199999999720603
+  }
+]

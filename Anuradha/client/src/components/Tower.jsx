@@ -1,4 +1,3 @@
-// client/src/components/Tower.jsx
 import React from 'react';
 import './Tower.css';
 

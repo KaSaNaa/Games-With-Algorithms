@@ -6,6 +6,7 @@ export type TSPResult = {
     route: number[];
     distance: number;
     date: string;
+    timeMs: number; // <-- Added property for time taken in milliseconds
 };
 
 const STORAGE_KEY = "tsp_results";
