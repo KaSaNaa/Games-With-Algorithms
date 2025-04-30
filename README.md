@@ -1,4 +1,4 @@
-# PDSA-2-CW
+# Games with Algorithms
 
 A multi-game React project demonstrating classic algorithmic puzzles and AI strategies, built for PDSA-2 coursework.
 
