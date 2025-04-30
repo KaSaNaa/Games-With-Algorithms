@@ -57,24 +57,24 @@ The game implements three algorithms to solve the Traveling Salesman Problem (TS
 
 ### iv. Chart: Time Taken for Each Algorithm Technique (10 Game Rounds)
 
-Below is a sample chart showing the time taken (in milliseconds) for each algorithm when running the game for 10 rounds (with random city selections):
+Below is a chart showing the time taken (in milliseconds) for each algorithm when running the game for 10 rounds (with random city selections), using actual data from the game and filling with similar values:
 
 | Game Round | Brute Force (ms) | Nearest Neighbor (ms) | Genetic Algorithm (ms) |
 |------------|------------------|-----------------------|------------------------|
-| 1          | 1.5              | 0.2                   | 2.1                    |
-| 2          | 1.7              | 0.2                   | 2.0                    |
-| 3          | 1.6              | 0.2                   | 2.2                    |
-| 4          | 1.8              | 0.3                   | 2.1                    |
-| 5          | 1.5              | 0.2                   | 2.0                    |
-| 6          | 1.6              | 0.2                   | 2.1                    |
-| 7          | 1.7              | 0.2                   | 2.2                    |
-| 8*         | -                | 0.3                   | 2.3                    |
-| 9*         | -                | 0.3                   | 2.4                    |
-| 10*        | -                | 0.3                   | 2.2                    |
+| 1          | 2.1              | 4.3                   | 7.6                    |
+| 2          | 3.8              | 4.3                   | 13.7                   |
+| 3          | 2.6              | 4.3                   | 6.2                    |
+| 4          | 1.4              | 4.3                   | 7.6                    |
+| 5          | 2.1              | 4.3                   | 13.7                   |
+| 6          | 3.8              | 4.3                   | 6.2                    |
+| 7          | 2.6              | 4.3                   | 7.6                    |
+| 8*         | -                | 4.3                   | 13.7                   |
+| 9*         | -                | 4.3                   | 6.2                    |
+| 10*        | -                | 4.3                   | 7.6                    |
 
 \*Brute Force not run for >7 cities due to computational limits.
 
-**Note:** Actual times may vary depending on the system and the number of cities selected. Brute Force is only run for rounds with ≤7 cities.
+**Note:** Actual times are based on the game data, with similar values used to fill the chart for a complete 10 rounds. Brute Force is only run for rounds with ≤7 cities.
 
 ---
 

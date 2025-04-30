@@ -4,8 +4,8 @@ import {
   checkWinner,
   isDraw,
   getGameResult,
-} from "./gameLogic";
-import { Board } from "./types";
+} from "../logic/ticTacToe/gameLogic";
+import { Board } from "../logic/ticTacToe/types";
 
 describe("TicTacToe gameLogic", () => {
   it("should create an empty 5x5 board", () => {

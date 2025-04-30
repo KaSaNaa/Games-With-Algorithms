@@ -1,7 +1,7 @@
-import { mctsMove } from "./mcts";
-import { Board } from "./types";
+import { minimaxMove } from "../logic/ticTacToe/minimax";
+import { Board, Player } from "../logic/ticTacToe/types";
 
-describe("mctsMove", () => {
+describe("minimaxMove", () => {
   it("should pick a winning move if available", () => {
     const board: Board = [
       ["O", "O", "O", "O", ""],
@@ -10,7 +10,7 @@ describe("mctsMove", () => {
       ["", "", "", "", ""],
       ["", "", "", "", ""],
     ];
-    const move = mctsMove(board, "O", 10);
+    const move = minimaxMove(board, "O", 2);
     expect(move).toEqual({ row: 0, col: 4 });
   });
 
@@ -22,13 +22,13 @@ describe("mctsMove", () => {
       ["", "", "", "", ""],
       ["", "", "", "", ""],
     ];
-    const move = mctsMove(board, "O", 10);
+    const move = minimaxMove(board, "O", 2);
     expect(move).toEqual({ row: 0, col: 4 });
   });
 
   it("should return a valid move on an empty board", () => {
     const board: Board = Array.from({ length: 5 }, () => Array(5).fill(""));
-    const move = mctsMove(board, "O", 5);
+    const move = minimaxMove(board, "O", 2);
     expect(move.row).toBeGreaterThanOrEqual(0);
     expect(move.row).toBeLessThan(5);
     expect(move.col).toBeGreaterThanOrEqual(0);
