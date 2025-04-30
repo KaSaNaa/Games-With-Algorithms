@@ -14,7 +14,7 @@ export function hanoiRecursive(n, source, auxiliary, destination) {
     return moves;
 }
 
-// 3-Peg Iterative (Non-Recursive) Algorithm - Fixed version
+// 3-Peg Iterative (Non-Recursive) Algorithm
 export function hanoiIterative(n, source, auxiliary, destination) {
     if (n === 1) return [`${source}->${destination}`];
     let moves = [];
@@ -63,7 +63,7 @@ export function hanoiIterative(n, source, auxiliary, destination) {
     return moves;
 }
 
-// 4-Peg Frame-Stewart Algorithm (Simplified)
+// 4-Peg Frame-Stewart Algorithm
 export function frameStewart(n, source = 'A', spare1 = 'B', spare2 = 'C', destination = 'D') {
     // Allow passing peg names as an array
     if (Array.isArray(source)) {
