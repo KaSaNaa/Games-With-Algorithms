@@ -134,3 +134,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+Thilothma/.vite/deps/_metadata.json
+TSP/.vite/deps/_metadata.json
